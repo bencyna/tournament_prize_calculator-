@@ -6,3 +6,5 @@ Ben = Person("Ben", 70)
 Finn = Person("Finnl", 70)
 Philip = Person("Philip", 50)
 
+game = Game([Will, Ben, Finn, Philip])
+game.showOdds()

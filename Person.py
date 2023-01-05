@@ -4,20 +4,20 @@ class Person:
     self.skill = skill
     self.percOdds = 0  
 
-    def increment_skill(self):
-        self.skill += 5 if self.skill < 100 else 0
+def increment_skill(self):
+    self.skill += 5 if self.skill < 100 else 0
 
-    def decrement_skill(self):
-        self.skill -= 5 if self.skill > 5 else 0
+def decrement_skill(self):
+    self.skill -= 5 if self.skill > 5 else 0
 
-    def getSkill(self) -> int:
-        return self.skill
-    
-    def getName(self) -> str:   
-        return self.name
+def getSkill(self) -> int:
+    return self.skill
 
-    def getOdds(self):
-        return self.percOdds
+def getName(self) -> str:   
+    return self.name
 
-    def setOdds(self, odds):
-        self.percOdds = odds
+def getOdds(self) -> int:
+    return self.percOdds
+
+def setOdds(self, odds) -> None:
+    self.percOdds = odds

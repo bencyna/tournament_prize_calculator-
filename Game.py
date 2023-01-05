@@ -1,17 +1,23 @@
+from Person import Person
 class Game:
-    def __init__(self, people):
+    def __init__(self, people) -> None:
         self.players_len = len(people)
         self.players = people
         self.__generateOdds()
 
-    def __generateOdds(self):
+    def __generateOdds(self) -> None:
         skill_sum = 0
         for person in self.players:
             skill_sum += person.getSkill()
-        averageSkill = skill_sum // self.players_len
+        
+        for player in self.players:
+            player.setOdds(player.getSkill()/skill_sum)
 
         
+    def showOdds(self) -> None:
+        for player in self.players:
+            print(f"{player.getName()} has a {player.getOdds()*100}% chance of winning")
 
-    def addPerson(self, person):
+    def addPerson(self, person) -> None:
         self.players.append(person)
         self.players_len += 1
