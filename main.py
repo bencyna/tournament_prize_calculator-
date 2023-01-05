@@ -1,10 +1,9 @@
 from Person import Person
 from Game import Game
 
-Will = Person("Will", 80)
-Ben = Person("Ben", 70)
-Finn = Person("Finnl", 70)
-Philip = Person("Philip", 50)
-
+Will = Person("Will", 85)
+Ben = Person("Ben", 60)
+Finn = Person("Finnl", 60)
+Philip = Person("Philip", 30)
 game = Game([Will, Ben, Finn, Philip])
 game.showOdds()

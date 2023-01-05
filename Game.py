@@ -1,6 +1,6 @@
 from Person import Person
 class Game:
-    def __init__(self, people) -> None:
+    def __init__(self, people: list[Person]) -> None:
         self.players_len = len(people)
         self.players = people
         self.__generateOdds()
@@ -16,7 +16,7 @@ class Game:
         
     def showOdds(self) -> None:
         for player in self.players:
-            print(f"{player.getName()} has a {player.getOdds()*100}% chance of winning")
+            print(f"{player.getName()} has a {round(player.getOdds()*100, 2)}% chance of winning")
 
     def addPerson(self, person) -> None:
         self.players.append(person)
