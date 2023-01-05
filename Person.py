@@ -18,3 +18,6 @@ class Person:
 
     def getOdds(self):
         return self.percOdds
+
+    def setOdds(self, odds):
+        self.percOdds = odds

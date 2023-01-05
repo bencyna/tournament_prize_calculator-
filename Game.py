@@ -9,7 +9,8 @@ class Game:
         for person in self.players:
             skill_sum += person.getSkill()
         averageSkill = skill_sum // self.players_len
-    
+
+        
 
     def addPerson(self, person):
         self.players.append(person)
