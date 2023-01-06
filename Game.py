@@ -20,4 +20,4 @@ class Game:
 
     def addPerson(self, person) -> None:
         self.players.append(person)
-        self.players_len += 1
+        self.players_len += 1 
