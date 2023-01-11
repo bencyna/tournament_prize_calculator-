@@ -1,4 +1,5 @@
 from Person import Person
+from Tournament import Tournament
 from Game import Game
 
 Will = Person("Will", 85)
