@@ -1,9 +1,13 @@
 from Person import Person
 class Tournament:
     def __init__(self, people: list[Person]) -> None:
+        if len(people) < 4:
+            print("Requires a minimum of 4 people")
+            return
         self.players_len = len(people)
         self.players = people
         self.__generateOdds()
+        self.__generateGameTree()
 
     def __generateOdds(self) -> None:
         skill_sum = 0
