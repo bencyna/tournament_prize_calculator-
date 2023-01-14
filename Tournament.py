@@ -21,6 +21,7 @@ class Tournament:
 
     def __generateGameTree(self):
           self.rounds = math.ceil(math.log2(self.players_len))
+          #play games
         
     def showOdds(self) -> None:
         for player in self.players:
