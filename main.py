@@ -12,5 +12,5 @@ Philip = Person("Philip", 30)
 # start game
 tournament = Tournament([Will, Ben, Finn, Philip])
 #give gui the game
-gui = GUI(tournament)
+gui = GUI(tournament) 
 # tournament.showOdds() 
