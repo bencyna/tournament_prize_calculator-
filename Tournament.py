@@ -6,8 +6,9 @@ class Tournament:
             print("Requires a minimum of 4 people")
             return
         self.players_len = len(people)
-        self.players = people
+        self.players = people.sort(key=lambda x:x.getSkill())
         self.rounds = 0
+        self.matches = []
         self.__generateOdds()
         self.__generateGameTree()
 
@@ -21,7 +22,10 @@ class Tournament:
 
     def __generateGameTree(self):
           self.rounds = math.ceil(math.log2(self.players_len))
-          #play games
+          #set matches tournament to a matrix
+          self.matches = [[] for _ in range(rounds-1)]
+          # create the games with each seeded player on a corner
+
         
     def showOdds(self) -> None:
         for player in self.players:
@@ -30,5 +34,8 @@ class Tournament:
     def addPerson(self, person) -> None:
         self.players.append(person)
         self.players_len += 1 
+    
+    def getTournamentDets(self):
+        return self.rounds, self.players, self.matches
 
     
