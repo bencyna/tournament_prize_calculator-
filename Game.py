@@ -3,10 +3,19 @@ class Game:
     def __init__(self, player1: Person, player2: Person) -> None:
         self.p1 = player1
         self.p2 = player2
-        self.__generateOdds
+        self.__generateOdds()
         self.winner: Person = None
         self.score = [0, 0]
     
+    def __generateOdds(self):
+        if self.p1 and self.p2:
+            player1_chance = (self.p1.getSkill() / (self.p1.getSkill() + self.p2.getSkill())) * 100
+            player2_chance = (self.p2.getSkill() / (self.p1.getSkill() + self.p2.getSkill())) * 100
+            return (player1_chance, player2_chance)
+        else:
+            print("Sorry, 2 players aren't here yet")
+            return None
+
     def getP1(self) -> Person:
         return self.p1
 

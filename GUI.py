@@ -12,5 +12,7 @@ class GUI:
         window = Tk()
         window.config(padx=50, pady=50, width=900, height=700, background='white')
         window.title("Tournament")
+        frame = Frame(borderwidth=5, relief=SUNKEN)
+        frame.pack()
         self.matches = self.tournament.getGames()
         window.mainloop()
