@@ -25,3 +25,9 @@ class Game:
             return "Winner"
         else:
             print("No winner yet!") 
+
+    def setP2(self, player):
+        self.p2 = player
+
+    def setP1(self, player):
+        self.p2 = player
