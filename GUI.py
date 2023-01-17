@@ -10,6 +10,6 @@ class GUI:
     def startGui(self):
         window = Tk()
         window.config(padx=50, pady=50, width=900, height=700, background='white')
-        window.title("Writers block block")
+        window.title("Tournament")
         time.sleep(1)
         window.mainloop()
