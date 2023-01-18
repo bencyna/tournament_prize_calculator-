@@ -14,5 +14,11 @@ class GUI:
         window.title("Tournament")
         frame = Frame(borderwidth=5, relief=SUNKEN)
         frame.pack()
+        text = Text(width=50, font=('Times New Roman', 15, 'italic'), borderwidth=0)
+        text.insert(INSERT, "Start typing...")
+        text.pack(side=TOP, ipadx=30, ipady=10)
+
+        canvas = Canvas(width=900, height=600, highlightthickness=0, background="white")
+        canvas.pack()
         self.matches = self.tournament.getGames()
         window.mainloop()
