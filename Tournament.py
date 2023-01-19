@@ -13,7 +13,7 @@ class Tournament:
         self.currentRound = 0
         self.matches = []
         self.seed = set() 
-        print(self.players[:len(self.players)//2])
+        # print(self.players[:len(self.players)//2])
         if not group:
             for player in self.players[:len(self.players)//2]:
                 self.seed.add(player)
@@ -31,7 +31,7 @@ class Tournament:
     def __generateGameTree(self):
         self.rounds = math.ceil(math.log2(self.players_len))
         #set matches tournament to a matrix
-        self.matches = [[] for _ in range(self.rounds-1)]
+        self.matches = [[] for _ in range(self.rounds)]
         # create the games with each seeded player on a cornerm should be random for non group stages
         games_to_add = math.ceil(len(self.players)/2)
         for player in self.seed:
@@ -45,7 +45,9 @@ class Tournament:
                 matchIndex += 1
 
         # this should set up all the matches to come with no one in them yet
-        #
+        # first round is set up
+        print(self.matches)
+
 
     def showOdds(self) -> None:
         for player in self.players:

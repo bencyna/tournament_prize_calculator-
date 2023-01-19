@@ -14,7 +14,8 @@ class GUI:
         x = 50
         for round in self.matches:
             for match in round:
-                print(match)
+                # print(match)
+                pass
 
     def startGui(self):
         window = Tk()
