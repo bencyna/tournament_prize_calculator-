@@ -44,7 +44,7 @@ class Tournament:
                 self.matches[0][matchIndex].setP2(player)
                 matchIndex += 1
 
-        #games created
+        # this should set up all the matches to come with no one in them yet
         #
 
     def showOdds(self) -> None:
