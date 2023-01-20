@@ -10,24 +10,28 @@ class GUI:
 
     def __buildTournament(self, canvas):
         # add each match to the tournament tree
-        y = 50
-        x = 50
+        y = 5
+        x = 5
         for round in self.matches:
             for match in round:
-                # print(match)
-                pass
+                # put the matches on the screen
+                screen_text = "TBA"
+                p1 = match.getP1()
+                p2 = match.getP2()
+                if p1 and p2:
+                    screen_text = f"{p1.getName()} vs {p2.getName()}"
+
+                print(screen_text)
+                text = Text(width=10, font=('Arial', 15), borderwidth=1)
+                text.insert(INSERT, screen_text)
+                text.pack(side=LEFT, ipadx=5, ipady=5)
+
 
     def startGui(self):
         window = Tk()
-        window.config(padx=50, pady=50, width=900, height=700, background='white')
+        window.config(padx=50, pady=50, width=1000, height=1000, background='white')
         window.title("Tournament")
-        frame = Frame(borderwidth=5, relief=SUNKEN)
-        frame.pack()
-        text = Text(width=50, font=('Times New Roman', 15, 'italic'), borderwidth=1)
-        text.insert(INSERT, "Start typing...")
-        text.pack(side=TOP, ipadx=30, ipady=10)
         canvas = Canvas(width=900, height=600, highlightthickness=0, background="white")
-        canvas.pack()
         self.matches = self.tournament.getGames()
         self.__buildTournament(canvas)
         window.mainloop()

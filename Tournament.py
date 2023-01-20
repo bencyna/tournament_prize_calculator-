@@ -46,7 +46,12 @@ class Tournament:
 
         # this should set up all the matches to come with no one in them yet
         # first round is set up
-        print(self.matches)
+        matchesLeft = matchIndex//2
+        for i in range(1, self.rounds):
+            for _ in range(matchesLeft):
+                game = Game(None, None)
+                self.matches[i].append(game)
+            matchesLeft //= 2
 
 
     def showOdds(self) -> None:

@@ -12,11 +12,12 @@ max = Person("Max", 75)
 Lebron = Person("Lebron", 20)
 champ = Person("World Champ", 90)
 legend = Person("Legend", 30)
+legend2 = Person("Legend2", 30)
 
 # start game
-tournament = Tournament([Will, Ben, Finn, Philip, max,Lebron,champ,legend ])
+tournament = Tournament([Will, Ben, Finn, Philip, max, Lebron, champ, legend])
 # tournament = Tournament([Will, Ben, Finn, Philip])
 
-#give gui the game
-gui = GUI(tournament) 
-# tournament.showOdds() 
+# give gui the game
+gui = GUI(tournament)
+# tournament.showOdds()
