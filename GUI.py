@@ -34,4 +34,4 @@ class GUI:
         canvas = Canvas(width=900, height=600, highlightthickness=0, background="white")
         self.matches = self.tournament.getGames()
         self.__buildTournament(canvas)
-        window.mainloop() 
+        window.mainloop()  
