@@ -15,6 +15,7 @@ class GUI:
         x = 5
         for i, round in enumerate(self.matches):
             # different column needed
+            column = Widget(width=20, borderwidth=1)
             for match in round:
                 # put the matches on the screen
                 screen_text1 = "TBA"

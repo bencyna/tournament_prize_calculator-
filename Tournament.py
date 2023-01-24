@@ -8,18 +8,17 @@ class Tournament:
             print("Requires a minimum of 4 people")
             return
         self.players_len = len(people)
-        self.players = sorted(people, key=lambda x:x.getSkill())
+        self.players = sorted(people, reverse=True, key=lambda x:x.getSkill())
         self.rounds = 0
         self.currentRound = 0
         self.matches = []
         self.seed = set() 
-        # print(self.players[:len(self.players)//2])
 
         # if no group stage, generate the seeds here
         if not group:
             for i, player in enumerate(self.players[:len(self.players)//2]):
                 self.seed.add(player)
-                player.setRank(i)
+                player.setRank(i+1)
         self.__generateOdds()
         self.__generateGameTree()
 
