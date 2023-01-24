@@ -2,7 +2,8 @@ class Person:
     def __init__(self, name, skill):
         self.name = name
         self.skill = skill
-        self.percOdds = 0  
+        self.percOdds = 0 
+        self.rank = None 
 
     def increment_skill(self):
         self.skill += 5 if self.skill < 100 else 0
@@ -21,3 +22,9 @@ class Person:
 
     def setOdds(self, odds) -> None:
         self.percOdds = odds
+    
+    def setRank(self, seed):
+        self.rank = seed
+
+    def getRank(self):
+        return self.rank

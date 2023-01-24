@@ -14,9 +14,12 @@ class Tournament:
         self.matches = []
         self.seed = set() 
         # print(self.players[:len(self.players)//2])
+
+        # if no group stage, generate the seeds here
         if not group:
-            for player in self.players[:len(self.players)//2]:
+            for i, player in enumerate(self.players[:len(self.players)//2]):
                 self.seed.add(player)
+                player.setRank(i)
         self.__generateOdds()
         self.__generateGameTree()
 
