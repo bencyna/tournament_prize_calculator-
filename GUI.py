@@ -38,7 +38,7 @@ class GUI:
 
 
     def startGui(self):
-        window = Tk()
+        window = Tk() 
         window.config(padx=50, pady=50, width=1000, height=1000, background='white')
         window.title("Tournament")
         canvas = Canvas(width=900, height=600, highlightthickness=0, background="white")
