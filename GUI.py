@@ -45,4 +45,4 @@ class GUI:
         self.matches = self.tournament.getGames()
         self.matchesText = [[] for round in self.matches]
         self.__buildTournament(canvas)
-        window.mainloop()    
+        window.mainloop()     
