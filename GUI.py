@@ -35,7 +35,7 @@ class GUI:
                 text2.insert(INSERT, screen_text2)
                 text1.pack(side=TOP, ipadx=5, ipady=5)  
                 text2.pack(side=TOP, ipadx=5, ipady=5)
- 
+  
 
     def startGui(self):
         window = Tk() 
