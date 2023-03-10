@@ -19,5 +19,5 @@ tournament = Tournament([Will, Ben, Finn, Philip, max, Lebron, champ, legend])
 # tournament = Tournament([Will, Ben, Finn, Philip])
 
 # give gui the game
-gui = GUI(tournament)
+gui = GUI(tournament) 
 # tournament.showOdds()
