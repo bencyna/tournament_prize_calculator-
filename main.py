@@ -18,7 +18,7 @@ legend2 = Person("Legend2", 30)
 tournament = Tournament([Will, Ben, Finn, Philip, max, Lebron, champ, legend])
 # tournament = Tournament([Will, Ben, Finn, Philip])
 
-# give gui the game
+# give gui the game 
 # gui = GUI(tournament) 
 # tournament.showOdds()
  
