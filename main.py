@@ -22,4 +22,4 @@ tournament = Tournament([Will, Ben, Finn, Philip, max, Lebron, champ, legend])
 # gui = GUI(tournament) 
 # tournament.showOdds()
  
-  
+   
