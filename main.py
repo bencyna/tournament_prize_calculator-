@@ -21,6 +21,7 @@ tournament = Tournament([Will, Ben, Finn, Philip, max, Lebron, champ, legend])
 # give gui the game 
 root = tk.Tk()
 gui = GUI(root, tournament) 
+root.mainloop()
 tournament.showOdds()
  
    
