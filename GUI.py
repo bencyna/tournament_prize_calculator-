@@ -6,9 +6,9 @@ class GUI:
         self.tournament = tournament
         self.matches = []
         self.matchesText = [] # has the tkinter text object
-        self.startGui()
+        self.__buildTournament()
 
-    def __buildTournament(self, canvas):
+    def __buildTournament(self):
         # add each match to the tournament tree
         y = 5
         x = 5
@@ -25,7 +25,7 @@ class GUI:
                 if p2:
                     screen_text2 = p2.getName() + " " + str(p2.getRank()) if p2.getRank() else p2.getName()
 
-
+        self.create_widgets()
     def create_widgets(self):
         # Create the tournament tree using labels
         labels = []
@@ -33,7 +33,7 @@ class GUI:
         for i in range(num_matches):
             labels.append(tk.Label(self.root, text=f"{self.matches[i][0]} vs. {self.matches[i][1]}"))
             labels[i].grid(row=i, column=0)
-
+        print(labels)
         # Create labels for the current round and player names
         round_label = tk.Label(self.root, text=f"Current Round: {self.current_round}")
         round_label.grid(row=num_matches, column=0)
