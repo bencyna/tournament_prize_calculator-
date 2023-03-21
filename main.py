@@ -1,7 +1,7 @@
 from Person import Person
 from Tournament import Tournament
-from Game import Game
 from GUI import GUI
+import tkinter as tk
 
 # create people
 Will = Person("Will", 75)
@@ -19,7 +19,8 @@ tournament = Tournament([Will, Ben, Finn, Philip, max, Lebron, champ, legend])
 # tournament = Tournament([Will, Ben, Finn, Philip])
 
 # give gui the game 
-gui = GUI(tournament) 
+root = tk.Tk()
+gui = GUI(root, tournament) 
 tournament.showOdds()
  
    
