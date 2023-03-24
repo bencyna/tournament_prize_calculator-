@@ -76,7 +76,7 @@ def transform(program):
             new_program.append(["Pop", None])
             value = prefix[i] + value
         new_program.append([function, value]) 
-                
+                 
                 
     
         
