@@ -1,56 +1,51 @@
 import tkinter as tk
+from tkinter import ttk
+from Tournament import Tournament
 
 class GUI(tk.Frame):
-    def __init__(self, master, tournament):
-        super().__init__(master)
+    def __init__(self, parent, tournament: Tournament):
+        super().__init__(parent)
+        self.parent = parent
         self.tournament = tournament
-        self.canvas = tk.Canvas(self, width=800, height=600, bg='white')
-        self.canvas.pack(expand=True, fill=tk.BOTH)
-        self.draw_tree()
-    
-    def draw_tree(self):
+        self.parent.title("Tournament Generator")
+
+        # create a frame for the tournament details
+        tournament_frame = tk.LabelFrame(self.parent, text="Tournament Details")
+        tournament_frame.pack(fill="both", expand=True, padx=10, pady=10)
+
+        # display the tournament details
         rounds, players, matches = self.tournament.getTournamentDets()
-        game_radius = 25
-        game_spacing = 100
-        round_spacing = 150
-        x = round_spacing
-        y = game_spacing + round_spacing
+        tk.Label(tournament_frame, text=f"Number of rounds: {rounds}").grid(row=0, column=0, sticky="w")
+        tk.Label(tournament_frame, text=f"Number of players: {len(players)}").grid(row=1, column=0, sticky="w")
+        tk.Label(tournament_frame, text=f"Matches: {len(matches)}").grid(row=2, column=0, sticky="w")
 
-        # Draw nodes
-        for i in range(rounds):
-            num_games = len(matches[i])
-            y += round_spacing
-            x_offset = (round_spacing - num_games*game_spacing)/2
-            for j in range(num_games):
-                game = matches[i][j]
-                x_pos = x + x_offset + j*game_spacing
-                y_pos = y
-                if game.getP1() is not None:
-                    self.canvas.create_oval(x_pos-game_radius, y_pos-game_radius,
-                                            x_pos+game_radius, y_pos+game_radius, fill='lightblue')
-                    self.canvas.create_text(x_pos, y_pos, text=game.getP1().getName())
-                if game.getP2() is not None:
-                    self.canvas.create_oval(x_pos-game_radius, y_pos+round_spacing-game_radius,
-                                            x_pos+game_radius, y_pos+round_spacing+game_radius, fill='lightblue')
-                    self.canvas.create_text(x_pos, y_pos+round_spacing, text=game.getP2().getName())
+        # create a frame for the games
+        games_frame = tk.LabelFrame(self.parent, text="Games")
+        games_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
-            game_spacing *= 2
+        # display the games
+        games = self.tournament.getGames()
+        for i, round in enumerate(games):
+            round_label = tk.Label(games_frame, text=f"Round {i+1}")
+            round_label.grid(row=i, column=0, sticky="w")
+            for j, game in enumerate(round):
+                if game.getP1():
+                    game_label = tk.Label(games_frame, text=f"{game.getP1().getName()} vs {game.getP2().getName()}")
+                    game_label.grid(row=i, column=j+1, padx=10, pady=5)
+                else:
+                    game_label = tk.Label(games_frame, text=f"TBD")
+                    game_label.grid(row=i, column=j+1, padx=10, pady=5)
+                    
+        # create a frame for the odds
+        odds_frame = tk.LabelFrame(self.parent, text="Odds")
+        odds_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
-        # Draw edges
-        game_spacing //= 2
-        for i in range(rounds-1):
-            num_games = len(matches[i])
-            next_num_games = len(matches[i+1])
-            x_offset = (round_spacing - num_games*game_spacing)/2
-            next_x_offset = (round_spacing - next_num_games*game_spacing)/2
-            for j in range(num_games):
-                game = matches[i][j]
-                x_pos1 = x + x_offset + j*game_spacing
-                y_pos1 = y - round_spacing + game_spacing + j*game_spacing
-                x_pos2 = x + round_spacing + next_x_offset + j//2*game_spacing*2
-                y_pos2 = y + game_spacing + (j//2)*game_spacing*2
-                if i == len(matches[i]):
-                    self.canvas.create_line(x_pos1, y_pos1+game_radius,
-                                            x_pos2, y_pos2-game_radius, width=2, arrow=tk.LAST)
-        
-        self.pack()
+        # display the odds
+        for i, player in enumerate(players):
+            if player:
+                odds_label = tk.Label(odds_frame, text=f"{player.getName()}: {round(player.getOdds()*100, 2)}%")
+                odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
+            else:
+                odds_label = tk.Label(odds_frame, text=f"TBD%")
+                odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
+                
