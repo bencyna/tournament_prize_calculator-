@@ -41,11 +41,11 @@ class GUI(tk.Frame):
         odds_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
         # display the odds
-        # for i, player in enumerate(players):
-        #     if player:
-        #         odds_label = tk.Label(odds_frame, text=f"{player.getName()}: {round(player.getOdds()*100, 2)}%")
-        #         odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
-        #     else:
-        #         odds_label = tk.Label(odds_frame, text=f"TBD%")
-        #         odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
+        for i, player in enumerate(players):
+            try:
+                odds_label = tk.Label(odds_frame, text=f"{player.getName()}: {round(player.getOdds()*100, 2)}%")
+                odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
+            except (Exception):
+                odds_label = tk.Label(odds_frame, text=f"TBD%")
+                odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
                 
