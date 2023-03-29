@@ -49,3 +49,4 @@ class GUI(tk.Frame):
                 odds_label = tk.Label(odds_frame, text=f"TBD%")
                 odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
                 
+ 
