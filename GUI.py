@@ -55,4 +55,22 @@ class GUI(tk.Frame):
                 
     def on_player_click(self, event, p1, p2=None):
         if p2 is not None:
-            print(f"Clicked: {p1} vs {p2}")
+            # determine the game that was clicked
+            game = self.tournament.getGame(p1, p2)
+
+            # make the clicked player the winner
+            if event.widget == event.widget.master.children["!label"]:
+                game.setWinner(game.getP1())
+            else:
+                game.setWinner(game.getP2())
+
+            # move the winner to the next round
+            if game.getNextGame():
+                next_game = game.getNextGame()
+                if next_game.getP1() is None:
+                    next_game.setP1(game.getWinner())
+                elif next_game.getP2() is None:
+                    next_game.setP2(game.getWinner())
+
+            # update the GUI
+            self.update_gui()
