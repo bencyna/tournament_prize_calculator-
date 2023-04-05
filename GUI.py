@@ -72,5 +72,5 @@ class GUI(tk.Frame):
                 elif next_game.getP2() is None:
                     next_game.setP2(game.getWinner())
 
-            # update the GUI
+            # update the GUI 
             self.update_gui()
