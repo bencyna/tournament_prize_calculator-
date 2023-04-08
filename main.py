@@ -24,4 +24,3 @@ gui = GUI(root, tournament)
 root.mainloop()
 tournament.showOdds()
  
-   
