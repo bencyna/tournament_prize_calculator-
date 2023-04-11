@@ -77,6 +77,6 @@ class Tournament:
         
         return None
     
-    
+     
     def getTournamentDets(self):
         return self.rounds, self.players, self.matches
