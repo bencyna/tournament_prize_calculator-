@@ -79,4 +79,4 @@ class Tournament:
     
       
     def getTournamentDets(self):
-        return self.rounds, self.players, self.matches        
+        return self.rounds, self.players, self.matches         
