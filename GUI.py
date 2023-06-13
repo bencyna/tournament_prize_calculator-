@@ -28,7 +28,18 @@ class GUI(tk.Frame):
         for i, round in enumerate(games):
             round_label = tk.Label(games_frame, text=f"Round {i+1}")
             round_label.grid(row=i, column=0, sticky="w")
-           
+            for j, game in enumerate(round):
+                if game.getP1():   
+                    p1_name = game.getP1().getName()
+                    p2_name = game.getP2().getName()
+                    game_label = tk.Label(games_frame, text=f"{game.getP1().getName()} vs {game.getP2().getName()}")
+                    game_label.grid(row=i, column=j+1, padx=10, pady=5)
+                     # bind click event to label
+                    game_label.bind("<Button-1>", lambda event, p1=p1_name, p2=p2_name: self.on_player_click(event, p1, p2))
+                else:
+                    game_label = tk.Label(games_frame, text=f"TBD")
+                    game_label.grid(row=i, column=j+1, padx=10, pady=5)
+                    
         # create a frame for the odds
         odds_frame = tk.LabelFrame(self.parent, text="Odds")
         odds_frame.pack(fill="both", expand=True, padx=10, pady=10)
