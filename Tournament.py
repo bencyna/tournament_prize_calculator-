@@ -74,7 +74,8 @@ class Tournament:
         for game in self.matches:
             if p1 == game.getP1() and p2 == game.getP2():
                 return game
-          
+         
+        return None
     
        
     def getTournamentDets(self):
