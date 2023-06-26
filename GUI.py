@@ -57,8 +57,9 @@ class GUI(tk.Frame):
     def on_player_click(self, event, p1, p2=None):
         if p2 is not None:
             print("eror here?")
-            
             # determine the game that was clicked
+            print(p1, p2)
+            
             game = self.tournament.getGame(p1, p2)
             print("eror here?")
 

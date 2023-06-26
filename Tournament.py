@@ -71,10 +71,11 @@ class Tournament:
         return self.matches
     
     def getGame(self, p1, p2):
-        for game in self.matches:
-            if p1 == game.getP1() and p2 == game.getP2():
-                return game
-        
+        for round in self.matches:
+            for game in round:
+                if p1 == game.getP1() and p2 == game.getP2():
+                    return game
+            
         return None
     
        
