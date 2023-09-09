@@ -8,14 +8,14 @@ Will = Person("Will", 75)
 Ben = Person("Ben", 60)
 Finn = Person("Finn", 60)
 Philip = Person("Philip", 30)
-max = Person("Max", 75)
-Lebron = Person("Lebron", 20)
-champ = Person("World Champ", 90)
-legend = Person("Legend", 30)
-legend2 = Person("Legend2", 30)
+Jo = Person("Jo", 75)
+Declan = Person("Declan", 20)
+Callum = Person("Callum", 90)
+Jemma = Person("Jemma", 30)
+Brad = Person("Brad", 30)
 
 # start game
-tournament = Tournament([Will, Ben, Finn, Philip, max, Lebron, champ, legend])
+tournament = Tournament([Will, Ben, Finn, Philip, Jo, Declan, Callum, Jemma])
 # tournament = Tournament([Will, Ben, Finn, Philip])
 
 # give gui the game 

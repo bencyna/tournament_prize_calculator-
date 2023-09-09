@@ -73,7 +73,7 @@ class Tournament:
     def getGame(self, p1, p2):
         for round in self.matches:
             for game in round:
-                if p1 == game.getP1() and p2 == game.getP2():
+                if p1 == game.getP1().getName() and p2 == game.getP2().getName():
                     return game
             
         return None
