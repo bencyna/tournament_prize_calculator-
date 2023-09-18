@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from Tournament import Tournament
+import math 
 
 class GUI(tk.Frame):
     def __init__(self, parent, tournament: Tournament):
@@ -8,7 +9,7 @@ class GUI(tk.Frame):
         self.parent = parent
         self.tournament = tournament
         self.parent.title("Tournament Generator")
-
+        
         # create a frame for the tournament details
         tournament_frame = tk.LabelFrame(self.parent, text="Tournament Details")
         tournament_frame.pack(fill="both", expand=True, padx=10, pady=10)
@@ -47,18 +48,18 @@ class GUI(tk.Frame):
 
         # display the odds
         for i, player in enumerate(players):
-            try:
-                odds_label = tk.Label(odds_frame, text=f"{player.getName()}: {round(player.getOdds()*100, 2)}%")
-                odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
-            except (Exception):
-                odds_label = tk.Label(odds_frame, text=f"TBD%")
-                odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
+            odds_label = tk.Label(odds_frame, text=f"{player.getName()}: {math.floor(player.getOdds()*100)}%")
+            odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
+            # except Exception as e:
+            #     odds_label = tk.Label(odds_frame, text=f"TBD%")
+            #     odds_label.grid(row=i, column=0, padx=10, pady=5, sticky="w")
                 
     def on_player_click(self, event, p1, p2=None):
         if p2 is not None:
             # determine the game that was clicked
             game = self.tournament.getGame(p1, p2)
             # make the clicked player the winner
+            print(event.widget.master.children["!label"], event.widget)
             if event.widget == event.widget.master.children["!label"]:
                 game.setWinner(game.getP1())
             else:
@@ -74,3 +75,5 @@ class GUI(tk.Frame):
 
             # update the GUI 
             self.update_gui()
+        else:
+            print("No player 2, we don't have a valid game yet")

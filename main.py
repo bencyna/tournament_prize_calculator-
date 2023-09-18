@@ -11,11 +11,11 @@ Philip = Person("Philip", 30)
 Jo = Person("Jo", 75)
 Declan = Person("Declan", 20)
 Callum = Person("Callum", 90)
-Jemma = Person("Jemma", 30)
+Isabel = Person("Isabel", 30)
 Brad = Person("Brad", 30)
 
 # start game
-tournament = Tournament([Will, Ben, Finn, Philip, Jo, Declan, Callum, Jemma])
+tournament = Tournament([Will, Ben, Finn, Philip, Jo, Declan, Callum, Isabel])
 # tournament = Tournament([Will, Ben, Finn, Philip])
 
 # give gui the game 
