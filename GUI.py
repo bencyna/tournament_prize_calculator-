@@ -24,24 +24,32 @@ class GUI(tk.Frame):
         games_frame = tk.LabelFrame(self.parent, text="Games")
         games_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
-        # display the games
+       # display the games
         games = self.tournament.getGames()
-        
+
         for i, round in enumerate(games):
             round_label = tk.Label(games_frame, text=f"Round {i+1}")
             round_label.grid(row=i, column=0, sticky="w")
+            
             for j, game in enumerate(round):
-                if game.getP1():   
+                if game.getP1():
                     p1_name = game.getP1().getName()
                     p2_name = game.getP2().getName()
-                    game_label = tk.Label(games_frame, text=f"{game.getP1().getName()} vs {game.getP2().getName()}")
-                    game_label.grid(row=i, column=j+1, padx=10, pady=5)
-                     # bind click event to label
-                    game_label.bind("<Button-1>", lambda event, p1=p1_name, p2=p2_name: self.on_player_click(event, p1, p2))
+                    
+                    p1_label = tk.Label(games_frame, text=p1_name)
+                    p2_label = tk.Label(games_frame, text=f"vs {p2_name}")
+                    
+                    p1_label.grid(row=i, column=j*2+1, padx=0, pady=5)
+                    p2_label.grid(row=i, column=j*2+2, padx=0, pady=5)
+                    
+                    # bind click event to labels
+                    p1_label.bind("<Button-1>", lambda event, p1=p1_name, p2=p2_name: self.on_player_click(event, p1, p2))
+                    p2_label.bind("<Button-1>", lambda event, p1=p1_name, p2=p2_name: self.on_player_click(event, p1, p2))
+                    
                 else:
                     game_label = tk.Label(games_frame, text=f"TBD")
-                    game_label.grid(row=i, column=j+1, padx=10, pady=5)
-                    
+                    game_label.grid(row=i, column=j*2+1, padx=10, pady=5)
+        
         # create a frame for the odds
         odds_frame = tk.LabelFrame(self.parent, text="Odds")
         odds_frame.pack(fill="both", expand=True, padx=10, pady=10)
@@ -59,11 +67,11 @@ class GUI(tk.Frame):
             # determine the game that was clicked
             game = self.tournament.getGame(p1, p2)
             # make the clicked player the winner
-            print(event.widget.master.children["!label"], event.widget)
-            if event.widget == event.widget.master.children["!label"]:
+            winner = event.widget.cget("text")
+            if p1 == winner:
                 game.setWinner(game.getP1())
             else:
-                game.setWinner(game.getP2())
+                game.setWinner(game.getP2())  
 
             # move the winner to the next round
             if game.getNextGame():
