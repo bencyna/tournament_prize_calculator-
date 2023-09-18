@@ -14,8 +14,9 @@ Callum = Person("Callum", 90)
 Vincent = Person("Vincent", 30)
 Brad = Person("Brad", 30)
 
+entry_fee = 10
 # start game
-tournament = Tournament([Will, Ben, Finn, Philip, Jo, Declan, Callum, Vincent])
+tournament = Tournament([Will, Ben, Finn, Philip, Jo, Declan, Callum, Vincent], entry_fee)
 # tournament = Tournament([Will, Ben, Finn, Philip])
 tournament.showOdds()
 

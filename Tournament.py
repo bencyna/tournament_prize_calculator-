@@ -2,8 +2,10 @@ from Person import Person
 from Game import Game
 import math
 import random
+from collections import defaultdict
+
 class Tournament:
-    def __init__(self, people: list[Person], group: bool = False) -> None:
+    def __init__(self, people: list[Person], entry_fee = 10, group: bool = False) -> None:
         if len(people) < 4:
             print("Requires a minimum of 4 people")
             return
@@ -13,6 +15,8 @@ class Tournament:
         self.currentRound = 0
         self.matches = []
         self.seed = set() 
+        self.player_wins = {}
+        self.entry_fee = entry_fee
 
         # if no group stage, generate the seeds here
         if not group:
@@ -98,3 +102,44 @@ class Tournament:
             
     def setTournamentWinner(self, winner):
         print(winner.getName() + " wins!")
+        self.generatePrizeMoney(winner)
+        
+    def generatePrizeMoney(self, winner):
+        # loop through all the matches and add each win to player wins
+        for i, round in enumerate(self.matches):
+            for j, game in enumerate(round):
+                winner = game.getWinner()
+                winner.wonGame()
+
+        # 
+        money = {}
+        total = len(self.players) * self.entry_fee
+        for player in self.players:
+            prize_money = self.calculate_prize(player, self.entry_fee)
+            money[player.getName()] = prize_money
+            total -= prize_money
+            
+        print(money, total)
+        
+        money_back = total/len(self.players)
+        
+        for name, money_so in money.items():
+            money[name] += money_back
+            
+        self.reset_wins()
+            
+    def calculate_prize(self, person: Person, entry_fee):
+        # Define a factor for progression. Higher rounds should have higher factors.
+        win_factors = {0: .5, 1: 1, 2: 1.5, 3: 2, 4:2.5}  # Adjust as needed
+        
+        # Calculate prize based on skill level, winning probability, and round
+        progression_factor = person.getWins()
+        chance_factor = 1 - person.getOdds() 
+
+        prize = (((chance_factor) * win_factors[progression_factor] * entry_fee)) 
+        
+        return prize
+
+    def reset_wins(self):
+        for player in self.players:
+            player.resetWins()

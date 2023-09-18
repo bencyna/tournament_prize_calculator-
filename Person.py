@@ -3,7 +3,8 @@ class Person:
         self.name = name
         self.skill = skill
         self.percOdds = 0 
-        self.rank = None 
+        self.wins = 0
+        self.rank = 0
 
     def increment_skill(self):
         self.skill += 5 if self.skill < 100 else 0
@@ -28,3 +29,13 @@ class Person:
 
     def getRank(self):
         return self.rank
+    
+    def wonGame(self):
+        self.wins += 1
+        
+    def getWins(self):
+        return self.wins
+    
+    def resetWins(self):
+        self.wins = 0
+        
