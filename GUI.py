@@ -40,7 +40,7 @@ class GUI(tk.Frame):
                     p1_name = game.getP1().getName()
                 else:
                     p1_name = "TBD"
-                if game.getP1():
+                if game.getP2():
                     p2_name = game.getP2().getName()
                 else:
                     p2_name = "TBD"

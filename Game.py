@@ -28,7 +28,7 @@ class Game:
     def setWinner(self, player):
         if player == self.p1 or player == self.p2:
             self.winner = player
-            print("winner is" + self.winner.getName())
+            print("winner is " + self.winner.getName())
         else:
             print("Error, player is not in this game")
 
@@ -44,7 +44,7 @@ class Game:
         self.__generateOdds()
 
     def setP1(self, player):
-        self.p2 = player
+        self.p1 = player
         self.__generateOdds()
     
     def getOdds(self):

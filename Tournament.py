@@ -84,7 +84,7 @@ class Tournament:
     
 
     def addWinnerToNextGame(self, winner, round_idx, game_idx):
-        if round_idx == self.rounds:
+        if round_idx == self.rounds-1:
             # we have an ultimate winner
             self.setTournamentWinner(winner)
         else:
@@ -95,7 +95,6 @@ class Tournament:
                 self.matches[new_round][new_game_idx].setP1(winner)
             else:
                 self.matches[new_round][new_game_idx].setP2(winner)
-                
-
+            
     def setTournamentWinner(self, winner):
         print(winner.getName() + " wins!")
