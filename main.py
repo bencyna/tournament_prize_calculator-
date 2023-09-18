@@ -17,10 +17,10 @@ Brad = Person("Brad", 30)
 # start game
 tournament = Tournament([Will, Ben, Finn, Philip, Jo, Declan, Callum, Vincent])
 # tournament = Tournament([Will, Ben, Finn, Philip])
+tournament.showOdds()
 
 # give gui the game 
 root = tk.Tk()
 gui = GUI(root, tournament) 
 root.mainloop()
-tournament.showOdds()
  
