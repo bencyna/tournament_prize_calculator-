@@ -71,13 +71,31 @@ class Tournament:
         return self.matches
     
     def getGame(self, p1, p2):
-        for round in self.matches:
-            for game in round:
+        for round_idx, round in enumerate(self.matches):
+            for game_idx, game in enumerate(round):
                 if p1 == game.getP1().getName() and p2 == game.getP2().getName():
-                    return game
+                    return game, round_idx, game_idx
             
         return None
     
        
     def getTournamentDets(self):
         return self.rounds, self.players, self.matches   
+    
+
+    def addWinnerToNextGame(self, winner, round_idx, game_idx):
+        if round_idx == self.rounds:
+            # we have an ultimate winner
+            self.setTournamentWinner(winner)
+        else:
+            new_round = round_idx + 1
+            new_game_idx = game_idx//2
+            # set players in game by index
+            if game_idx % 2 == 0:
+                self.matches[new_round][new_game_idx].setP1(winner)
+            else:
+                self.matches[new_round][new_game_idx].setP2(winner)
+                
+
+    def setTournamentWinner(self, winner):
+        print(winner.getName() + " wins!")

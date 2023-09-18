@@ -34,9 +34,10 @@ class Game:
 
     def getWinner(self):
         if self.winner:
-            return "Winner"
+            return self.winner
         else:
             print("No winner yet!") 
+            return None
 
     def setP2(self, player):
         self.p2 = player
