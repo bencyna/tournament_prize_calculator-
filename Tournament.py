@@ -118,14 +118,15 @@ class Tournament:
             prize_money = self.calculate_prize(player, self.entry_fee)
             money[player.getName()] = prize_money
             total -= prize_money
-            
-        print(money, total)
-        
+                    
         money_back = total/len(self.players)
         
         for name, money_so in money.items():
             money[name] += money_back
             
+            
+        print(money)
+        
         self.reset_wins()
             
     def calculate_prize(self, person: Person, entry_fee):
@@ -134,7 +135,7 @@ class Tournament:
         
         # Calculate prize based on skill level, winning probability, and round
         progression_factor = person.getWins()
-        chance_factor = 1 - person.getOdds() 
+        chance_factor = .85 - person.getOdds() 
 
         prize = (((chance_factor) * win_factors[progression_factor] * entry_fee)) 
         
